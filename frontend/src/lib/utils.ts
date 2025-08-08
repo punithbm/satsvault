@@ -6,11 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const truncateAddress = (
-  address: string,
-  toDisplayLength: number = 6,
-  endLength: number = 4
-) => {
+export const truncateAddress = (address: string, toDisplayLength: number = 6, endLength: number = 4) => {
   return `${address.slice(0, toDisplayLength)}...${address.slice(-endLength)}`;
 };
 
@@ -32,10 +28,7 @@ export const sanitizeAmount = (amount: string): string => {
 };
 
 export function doubleSHA256(data: any) {
-  return crypto
-    .createHash("sha256")
-    .update(crypto.createHash("sha256").update(data).digest())
-    .digest();
+  return crypto.createHash("sha256").update(crypto.createHash("sha256").update(data).digest()).digest();
 }
 
 export function hexToUint8Array(hex: string): Uint8Array {
@@ -58,15 +51,12 @@ export async function getWalletBalance(btcAddress: string) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_DVAULT_BASE_URL;
     const url = `${baseUrl}/get-balance`;
-    const response = await fetch(
-      `${url}?btcAddress=${encodeURIComponent(btcAddress)}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${url}?btcAddress=${encodeURIComponent(btcAddress)}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
@@ -100,17 +90,12 @@ export async function getTxDetails(txid: string): Promise<any> {
 export async function getAddress(btcAddressHash: string) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_DVAULT_BASE_URL;
-    const response = await fetch(
-      `${baseUrl}/get-address?btcAddressHash=${encodeURIComponent(
-        btcAddressHash
-      )}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${baseUrl}/get-address?btcAddressHash=${encodeURIComponent(btcAddressHash)}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

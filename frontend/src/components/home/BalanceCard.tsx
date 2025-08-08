@@ -14,38 +14,31 @@ function truncateMiddle(address: string, start = 8, end = 8) {
   return `${address.slice(0, start)}...${address.slice(-end)}`;
 }
 
-export default function BalanceCard({
-  btcAddress,
-  balance,
-}: {
-  btcAddress: string;
-  balance?: number;
-}) {
+export default function BalanceCard({ btcAddress, balance }: { btcAddress: string; balance?: number }) {
   const router = useRouter();
-  const { balance: walletBalance, setSatsBalance } =
-    useWalletBalance(btcAddress);
+  const { balance: walletBalance, setSatsBalance } = useWalletBalance(btcAddress);
   const qrRef = useRef<HTMLDivElement>(null);
 
   const qrOptions = useMemo(
     () => ({
-      width: 72,
-      height: 72,
+      width: 56,
+      height: 56,
       type: "svg" as const,
       data: btcAddress || "",
-      margin: 4,
-      qrOptions: { errorCorrectionLevel: "Q" as const },
+      margin: 2,
+      qrOptions: { errorCorrectionLevel: "M" as const },
       dotsOptions: {
         type: "rounded" as const,
-        color: "#000",
+        color: "#ffffff",
         gradient: undefined,
       },
       cornersSquareOptions: {
         type: "extra-rounded" as const,
-        color: "#000",
+        color: "#ffffff",
       },
       cornersDotOptions: {
         type: "dot" as const,
-        color: "#000",
+        color: "#ffffff",
       },
       backgroundOptions: {
         color: "transparent",
@@ -91,10 +84,10 @@ export default function BalanceCard({
   }, [qrCode]);
 
   return (
-    <div className="w-full bg-grey-50 rounded-md px-4 pt-6 pb-3 flex flex-col gap-y-[30px] items-start relative shadow-md">
+    <div className="w-full h-36 bg-gradient-to-br from-slate-900 via-slate-800 to-black rounded-md px-4 pt-6 pb-3 flex flex-col gap-y-[30px] items-start relative shadow-md">
       {/* QR + Address top-right */}
-      <div className="absolute right-3 top-3 flex items-start gap-3 rounded-xl">
-        <div ref={qrRef} className="w-[64px] h-[64px] flex-shrink-0 hidden" />
+      <div className="absolute right-3 top-3 flex items-start gap-0 rounded-xl">
+        <div ref={qrRef} className="-mt-1" />
         <div className="text-gray-400 text-[11px] font-mono">
           {chunkLines.map((l, i) => (
             <div key={i}>{l}</div>
@@ -102,38 +95,15 @@ export default function BalanceCard({
         </div>
       </div>
       <p className="text-sm-medium text-grey-400">WALLET</p>
-      <div className="flex items-end justify-between w-full">
+      <div className="flex items-end justify-between w-full mt-4">
         <div className="flex items-end gap-1 w-full justify-start">
-          <span className="headingBalance text-grey-600">
-            {walletBalance === 0
-              ? "0.00"
-              : Number(walletBalance)?.toFixed(walletBalance > 1 ? 4 : 4)}
-          </span>
-          <span className="headingBalanceSmall text-grey-400 self-end">
-            BTC
-          </span>
+          <span className="headingBalance text-white">{walletBalance === 0 ? "0.00" : Number(walletBalance)?.toFixed(walletBalance > 1 ? 4 : 4)}</span>
+          <span className="headingBalanceSmall text-grey-400 self-end">BTC</span>
         </div>
-        <Button
-          variant="secondary"
-          className="px-5 py-2 rounded-full"
-          onClick={() => router.push("/deposit")}
-        >
+        <Button variant="secondary" className="px-5 py-2 rounded-full" onClick={() => router.push("/deposit")}>
           LOAD
         </Button>
       </div>
-
-      {/* <div>
-        <div className="text-base font-semibold text-gray-200 mb-2">
-          Wallet Address
-        </div>
-        <div className="flex items-center px-4 py-3 rounded-lg bg-red-600/30 border border-red-600 gap-3">
-          <span className="text-lg font-mono text-gray-200 flex-1 select-all">
-            {truncateMiddle(walletAddress ?? "")}
-          </span>
-
-          <CopyIcon text={walletAddress ?? ""} className="!text-white" />
-        </div>
-      </div> */}
     </div>
   );
 }
