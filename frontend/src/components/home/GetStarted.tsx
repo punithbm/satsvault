@@ -135,7 +135,7 @@ export default function GetStarted() {
         const account = connectResult.accounts[0];
 
         // Sign a message for authentication
-        const message = `Sign in to SatsVault, you gateway to Bitcoin`;
+        const message = `Sign in to SatsVault, your gateway to Bitcoin`;
         // Convert message to hex format as required by personal_sign
         const messageHex = `0x${Buffer.from(message, "utf8").toString("hex")}`;
 
