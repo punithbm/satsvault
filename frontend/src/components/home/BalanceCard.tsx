@@ -50,11 +50,12 @@ export default function BalanceCard({ btcAddress, balance }: { btcAddress: strin
   const qrCode = useQRCodeStyling(qrOptions);
 
   const chunkLines = useMemo(() => {
+    console.log(btcAddress);
     if (!btcAddress) return [] as string[];
     const chunks: string[] = [];
-    for (let i = 0; i < btcAddress.length; i += 10) {
-      chunks.push(btcAddress.slice(i, i + 10));
-      if (chunks.length >= 3) break; // fewer lines with wider chunks
+    for (let i = 0; i < btcAddress.length; i += 11) {
+      chunks.push(btcAddress.slice(i, i + 11));
+      if (chunks.length >= 10) break; // fewer lines with wider chunks
     }
     return chunks;
   }, [btcAddress]);
@@ -88,7 +89,7 @@ export default function BalanceCard({ btcAddress, balance }: { btcAddress: strin
       {/* QR + Address top-right */}
       <div className="absolute right-3 top-3 flex items-start gap-0 rounded-xl">
         <div ref={qrRef} className="-mt-1" />
-        <div className="text-gray-400 text-[11px] font-mono">
+        <div className="text-gray-400 text-[6px] font-mono">
           {chunkLines.map((l, i) => (
             <div key={i}>{l}</div>
           ))}
