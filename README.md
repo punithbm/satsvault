@@ -4,6 +4,8 @@
 
 SatsVault is a cutting-edge Bitcoin vault solution that combines the security of decentralized custody with the flexibility of programmable policies. Built on multi-party computation (MPC) technology, SatsVault enables users to store, manage, and transact Bitcoin with enhanced security and customizable rules.
 
+<img width="10102" height="3553" alt="screenshots" src="https://github.com/user-attachments/assets/673944e8-26ee-4c88-b096-fc360c61aab8" />
+
 ### 🔐 Key Features
 
 - **Decentralized Custody**: No single point of failure with MPC-based key management
