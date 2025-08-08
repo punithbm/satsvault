@@ -2,57 +2,62 @@
 
 ## Decentralised & Programmable BTC Vaults
 
-SatsVault is a cutting-edge Bitcoin vault solution that combines the security of decentralized custody with the flexibility of programmable policies. Built on multi-party computation (MPC) technology, SatsVault enables users to store, manage, and transact Bitcoin with enhanced security and customizable rules.
+SatsVault is a Bitcoin vault solution combining decentralized custody with programmable policies. Built on multi-party computation (MPC) technology and integrated with Porto.sh as the gateway for seamless wallet connectivity.
 
 <img width="10102" height="3553" alt="screenshots" src="https://github.com/user-attachments/assets/673944e8-26ee-4c88-b096-fc360c61aab8" />
 
 ### 🔐 Key Features
 
-- **Decentralized Custody**: No single point of failure with MPC-based key management
-- **Programmable Policies**: Set custom spending rules, time restrictions, and approval workflows
+- **Decentralized Custody**: MPC-based key management with no single point of failure
+- **Porto.sh Integration**: Unified wallet gateway supporting multiple Bitcoin wallets
+- **Programmable Policies**: Custom spending rules, time restrictions, and approval workflows
 - **Smart Security**: Multi-signature approvals and conditional transaction policies
-- **User-Friendly Interface**: Intuitive web interface for vault management
-- **Bitcoin Native**: Direct Bitcoin transactions without wrapping or bridges
+- **Native Bitcoin**: Direct Bitcoin transactions without wrapping or bridges
 
 ### 🏗️ Architecture
 
-**Frontend**
-- Next.js application with React components
-- Tailwind CSS for responsive design
-- Real-time updates via WebSocket connections
-- Wallet integration for seamless Bitcoin operations
+**Frontend (Next.js)**
+- React components with Tailwind CSS
+- Porto.sh SDK for wallet connectivity (Xverse, Unisat, etc.)
+- Real-time updates via WebSocket
+- Multi-wallet support through unified interface
 
-**Backend**
-- Node.js with TypeScript
-- Multi-Party Computation (MPC) for distributed key generation
-- Bitcoin transaction handling and monitoring
+**Backend (Node.js)**
+- Multi-Party Computation (MPC) for distributed keys
+- Bitcoin transaction monitoring and processing
 - Policy enforcement engine
 - Supabase database integration
 
-### 🚀 Getting Started
+**Porto.sh Gateway**
+- Unified wallet connection interface
+- Support for multiple Bitcoin wallets (Xverse, Unisat)
+- PSBT signing and message authentication
+- Cross-wallet compatibility layer
+
+### 🚀 Quick Start
 
 #### Prerequisites
-- Node.js (v18 or higher)
-- pnpm package manager
-- Bitcoin testnet/mainnet access
+- Node.js (v18+) & pnpm
+- Bitcoin wallet (Xverse/Unisat)
+- Porto.sh compatible environment
 
-### 💡 Core Concepts
+### 💡 Core Features
 
-#### Multi-Party Computation (MPC)
+#### Multi-Party Computation
 - Distributed key generation and signing
-- No single party controls private keys
 - Enhanced security through cryptographic protocols
 
 #### Programmable Policies
-- **Spending Limits**: Daily/monthly transaction limits
-- **Time Restrictions**: Transaction time windows
-- **Recipient Whitelists**: Approved destination addresses
-- **Multi-Approval**: Require multiple confirmations
+- **Spending Limits**: Daily/monthly caps
+- **Time Windows**: Scheduled transactions
+- **Whitelists**: Approved recipients
+- **Multi-Approval**: Multiple confirmation requirements
 
-#### Vault Operations
-- **Deposit**: Secure Bitcoin deposits to vault addresses
-- **Withdraw**: Policy-governed Bitcoin withdrawals
-- **Transfer**: Internal vault-to-vault transfers
+#### Porto.sh Benefits
+- **Unified Interface**: Single SDK for multiple wallets
+- **Enhanced UX**: Consistent user experience across wallets
+- **Secure Gateway**: Standardized authentication and signing
+- **Wallet Agnostic**: Support for current and future Bitcoin wallets
 
 ### 📄 License
 
