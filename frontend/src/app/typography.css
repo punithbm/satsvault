@@ -1,0 +1,23 @@
+.headingBold {
+  @apply font-semibold lg:text-2xl text-xl font-sans;
+}
+
+.text-sm-medium {
+  @apply text-sm leading-[100%] font-medium font-sans;
+}
+
+.text-sm-semibold {
+  @apply text-sm leading-[100%] font-semibold font-sans;
+}
+
+.headingBalance {
+  @apply font-medium lg:text-5xl text-4xl lg:leading-[54px] leading-[36px] tracking-tight uppercase font-sans;
+}
+
+.headingBalanceSmall {
+  @apply font-semibold lg:text-xl text-lg lg:leading-[41px] leading-[28px] tracking-tight uppercase font-sans;
+}
+
+.text-sm-normal {
+  @apply text-sm leading-[100%] font-sans;
+}
